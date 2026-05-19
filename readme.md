@@ -1,10 +1,10 @@
-# 🚗 Accident Severity Prediction
+# Accident Severity Prediction
 
 ### End-to-End Machine Learning Pipeline | Datathon Project
 
 ---
 
-## 📌 Overview
+## Overview
 
 This project presents a complete machine learning pipeline to predict **accident severity** using structured tabular data. The goal was to accurately classify accidents into:
 
@@ -16,18 +16,18 @@ Despite severe class imbalance (~1% fatal cases), the model is optimized for **M
 
 ---
 
-## 🧠 Problem Statement
+## Problem Statement
 
 Traditional models maximize accuracy, which leads to poor detection of rare but critical events (like fatal accidents).
 
 This project focuses on:
 
-> 🎯 **Maximizing Macro F1-score**
+> **Maximizing Macro F1-score**
 > Ensuring minority classes are not ignored
 
 ---
 
-## 📊 Dataset
+## Dataset
 
 * ~12,000 rows
 * 30+ features
@@ -36,16 +36,16 @@ This project focuses on:
 
 ---
 
-## 🔍 Key Challenges
+## Key Challenges
 
-* ⚠️ Extreme class imbalance
-* ⚠️ High-dimensional sparse features (OHE)
-* ⚠️ Noisy categorical combinations
-* ⚠️ Risk of data leakage during resampling
+* Extreme class imbalance
+* High-dimensional sparse features (OHE)
+* Noisy categorical combinations
+* Risk of data leakage during resampling
 
 ---
 
-## ⚙️ Pipeline Overview
+## Pipeline Overview
 
 ```text
 Raw Data
@@ -60,14 +60,14 @@ Raw Data
 
 ---
 
-## 🧪 Experiments Conducted
+## Experiments Conducted
 
 ### Models Tested
 
 * Logistic Regression
 * Random Forest
 * XGBoost
-* LightGBM ✅ (Best)
+* LightGBM (Best)
 * CatBoost
 * Neural Networks
 
@@ -77,21 +77,12 @@ Raw Data
 
 | Method        | Result                          |
 | ------------- | ------------------------------- |
-| SMOTE         | ❌ Poor (invalid synthetic data) |
-| Class Weights | ⚠️ Unstable                     |
-| Undersampling | ⚠️ Loss of information          |
-| No Resampling | ✅ Best                          |
+| SMOTE         | Poor (invalid synthetic data) |
+| Class Weights | Unstable                     |
+| Undersampling | Loss of information          |
+| No Resampling | Best                          |
 
----
-
-## 🧠 Key Insight
-
-> ❗ The bottleneck was NOT the model
-> ✅ It was the **decision strategy**
-
----
-
-## 🔥 Breakthrough: Threshold Optimization
+## Threshold Optimization
 
 Instead of relying on:
 
@@ -99,7 +90,7 @@ Instead of relying on:
 argmax(probabilities)
 ```
 
-We used:
+I used:
 
 ```python
 prediction = argmax(probabilities * weights)
@@ -113,7 +104,7 @@ weights = [10, 3.5, 1]
 
 ---
 
-### 🧠 Why it works
+### This:
 
 * Boosts minority class importance
 * Improves recall without retraining
@@ -121,7 +112,7 @@ weights = [10, 3.5, 1]
 
 ---
 
-## ⚡ Rule-Based Overrides
+## Rule-Based Overrides
 
 Further improvements using domain-aware rules:
 
@@ -132,7 +123,7 @@ if fatal_probability > threshold:
 
 ---
 
-## 🏆 Final Results
+## Final Results
 
 | Metric                              | Score      |
 | ----------------------------------- | ---------- |
@@ -142,7 +133,7 @@ if fatal_probability > threshold:
 
 ---
 
-## 📊 Model Comparison (Top Results)
+## Model Comparison (Top Results)
 
 | Model    | Strategy | Macro F1  |
 | -------- | -------- | --------- |
@@ -152,7 +143,7 @@ if fatal_probability > threshold:
 
 ---
 
-## 💾 Saved Artifacts
+## Saved Artifacts
 
 | File                    | Description                |
 | ----------------------- | -------------------------- |
@@ -162,7 +153,7 @@ if fatal_probability > threshold:
 
 ---
 
-## 🌐 Streamlit Deployment
+## Streamlit Deployment
 
 Interactive UI built using **Streamlit**:
 
@@ -183,7 +174,7 @@ streamlit run scripts/app.py
 
 ---
 
-## 📦 Project Structure
+## Project Structure
 
 ```bash
 data/
@@ -207,16 +198,16 @@ README.md
 
 ---
 
-## 🧠 Key Learnings
+## Key Learnings
 
-* ✅ **Decision strategy > model complexity**
-* ✅ SMOTE fails on high-cardinality categorical data
-* ✅ Threshold tuning is critical for imbalanced problems
-* ✅ Feature interactions matter more than raw features
+* **Decision strategy > model complexity**
+* SMOTE fails on high-cardinality categorical data
+* Threshold tuning is critical for imbalanced problems
+* Feature interactions matter more than raw features
 
 ---
 
-## 🚀 Future Improvements
+## Future Improvements
 
 * Target Encoding instead of OHE
 * SHAP-based explainability
@@ -226,20 +217,12 @@ README.md
 
 ---
 
-## 🏁 Conclusion
-
-This project demonstrates how to move beyond standard ML workflows and build a **robust, competition-grade solution**.
-
-> 🎯 Real success came from understanding *how the model makes decisions*, not just training it.
-
----
-
-## 👤 Author
+## Author
 
 Built as part of a Datathon challenge focused on real-world ML problem solving.
 
 ---
 
-## ⭐ If you found this useful
+## If you found this useful
 
 Give the repo a ⭐ and feel free to fork or contribute!
